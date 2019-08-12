@@ -1,12 +1,21 @@
 import React from 'react';
 
+import './Layout.css';
 import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
 
-const Layout = () => {
+const Layout = (props) => {
     return (
-        <React.Fragment>
+        <div className="site-layout">
             <Header />
-        </React.Fragment>
+
+            <main>
+                {/* the children here is the returned route/routes from the Switch */}
+                {props.children}
+            </main>
+            
+            <Footer />
+        </div>
     )
 };
 

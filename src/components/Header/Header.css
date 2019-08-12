@@ -1,0 +1,19 @@
+.site-navigation {
+    display: flex;
+    justify-content: space-between;
+}
+
+.site-navigation ul {
+    display: flex;
+    padding: 0;
+}
+
+.site-navigation ul li {
+    list-style-type: none;
+    padding: 5px 10px;
+}
+
+.site-navigation ul li a {
+    text-decoration: none;
+    color: purple;
+}
