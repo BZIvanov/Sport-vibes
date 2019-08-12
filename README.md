@@ -69,7 +69,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 ---
 
-# About the project
+# About the project :herb:
 
 This is a React project about physical training program.
 
