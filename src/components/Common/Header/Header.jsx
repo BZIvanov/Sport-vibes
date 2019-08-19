@@ -9,17 +9,14 @@ const Navigation = () => {
 
     const user = (
         <ul>
-            <li><Link to="/user/login">Welcome</Link></li> 
+            <li>Welcome {localStorage.getItem('username')}!</li>
+            <li><Link to="/user/logout">Logout</Link></li> 
         </ul>
     );
     const noUser = (
         <ul>
-            <li>
-                <Link to="/user/login">Login</Link>
-            </li>
-            <li>
-                <Link to="/user/register">Register</Link>
-            </li>
+            <li><Link to="/user/login">Login</Link></li>
+            <li><Link to="/user/register">Register</Link></li>
         </ul>
     );
     

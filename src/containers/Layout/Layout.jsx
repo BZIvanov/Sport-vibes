@@ -10,7 +10,6 @@ const Layout = (props) => {
             <Header />
 
             <main>
-                {/* the children here is the returned route/routes from the Switch */}
                 {props.children}
             </main>
             

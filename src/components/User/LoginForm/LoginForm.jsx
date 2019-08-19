@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import './LoginForm.css';
 import { UserHandler } from '../../../services/userSetup';
@@ -71,9 +72,12 @@ const LoginForm = () => {
                 username: username.val,
                 password: password.val
             }).then(response => {
+                toast.success(`Welcome ${response.data.username}`);
                 userHandler.saveToSession(response['data']);
                 setUser(true);
                 auth.login();
+            }).catch(error => {
+                toast.error(error.response.data.description);
             });
         }
     };

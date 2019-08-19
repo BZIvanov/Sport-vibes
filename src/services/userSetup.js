@@ -1,4 +1,4 @@
-import axios from '../axiosNonUser';
+import axiosNonUser from '../axios/axiosNonUser';
 
 import * as kinveySetup from './kinveySetup';
 
@@ -10,14 +10,10 @@ export class UserHandler {
     };
 
     registerUser(userData) {
-        return axios.post(kinveySetup.baseUrl + "user/" + kinveySetup.appKey + "/", userData);
+        return axiosNonUser.post(kinveySetup.baseUrl + "user/" + kinveySetup.appKey + "/", userData);
     };
 
     loginUser(userData) {
-        return axios.post(kinveySetup.baseUrl + "user/" + kinveySetup.appKey + "/login", userData);
-    }
-
-    logoutUser() {
-        console.log("Logout user");
+        return axiosNonUser.post(kinveySetup.baseUrl + "user/" + kinveySetup.appKey + "/login", userData);
     }
 }
