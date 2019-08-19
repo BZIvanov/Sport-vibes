@@ -1,24 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import './App.css';
+import AuthContext from './context/auth-context';
 import Layout from './containers/Layout/Layout';
 import Home from './components/Home/Home';
 import RegisterForm from './components/User/RegisterForm/RegisterForm';
-import NotFound from './components/Common/NotFound/NotFound';
 import LoginForm from './components/User/LoginForm/LoginForm';
+import NotFound from './components/Common/NotFound/NotFound';
 
-function App() {
+const App = () => {
+  const [authStatus, setAuthStatus] = useState(localStorage.getItem('username') ? true: false);
+
+  const login = () => {
+    setAuthStatus(localStorage.getItem('username') ? true: false)
+  }
+
   return (
-    <Layout>
-      <Switch>
-        <Route path="/" exact render={() => <Redirect to="/home" />} />
-        <Route path="/home" component={Home} />
-        <Route path="/user/register" component={RegisterForm} />
-        <Route path="/user/login" component={LoginForm} />
-        <Route component={NotFound} />
-      </Switch>
-    </Layout>
+    <AuthContext.Provider value={{status: authStatus, login: login}}>
+      <Layout>
+        <Switch>
+          <Route path="/" exact render={() => <Redirect to="/home" />} />
+          <Route path="/home" component={Home} />
+          <Route path="/user/register" component={RegisterForm} />
+          <Route path="/user/login" component={LoginForm} />} />
+          <Route component={NotFound} />
+        </Switch>
+      </Layout>
+    </AuthContext.Provider>
   );
 }
 

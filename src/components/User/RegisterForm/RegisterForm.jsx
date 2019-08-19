@@ -98,13 +98,12 @@ const RegisterForm = (props) => {
         
         if ((username.errorMsg === '' && username.touched) && (email.errorMsg === '' && email.touched) &&
         (password.errorMsg === '' && password.touched) && (repeatPassword.errorMsg === '' && repeatPassword.touched)) {
-            let register = new UserHandler();
-            register.registerUser({
+            let userHandler = new UserHandler();
+            userHandler.registerUser({
                 username: username.val, 
                 email: email.val, 
                 password: password.val
             }).then(response => {
-                console.log(response);
                 props.history.push('/user/login');
             });
         }
