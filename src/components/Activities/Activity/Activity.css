@@ -1,0 +1,40 @@
+article.activity {
+    display: flex;
+    align-items: center;
+    margin: 15px 5px;
+    width: 240px;
+    height: 120px;
+    cursor: pointer;
+}
+
+article.selected {
+    background-color: rgb(220, 225, 230);
+    text-shadow: -2px 3px 5px darkgray;
+}
+
+article.activity h2  {
+    padding-left: 5px;
+}
+
+article.activity img {
+    width: 140px;
+    padding: 3px;
+}
+
+article.easy {
+    border: 2px solid lightgreen;
+    box-shadow: -3px 3px 5px lightgreen;
+    border-radius: 3px;
+}
+
+article.normal {
+    border: 2px solid lightyellow;
+    box-shadow: -3px 3px 5px lightyellow;
+    border-radius: 3px;
+}
+
+article.hard {
+    border: 2px solid lightcoral;
+    box-shadow: -3px 3px 5px lightcoral;
+    border-radius: 3px;
+}
