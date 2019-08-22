@@ -29,4 +29,23 @@ div.my-list {
     width: 255px;
     padding-left: 10px;
     border-left: 2px solid darkgray;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+div.my-list button {
+    width: 150px;
+    font-family: "Oleo Script";
+    font-size: 1.4em;
+    color: darkgray;
+    background: purple;
+    border: 2px solid darkgray;
+    border-radius: 5px;
+    text-shadow: 0 0 5px black;
+    outline: none;
+}
+
+div.my-list button:hover {
+    cursor: pointer;
+    box-shadow: -2px 2px 5px black;
 }
