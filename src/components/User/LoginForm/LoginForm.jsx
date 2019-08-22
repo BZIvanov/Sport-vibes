@@ -98,7 +98,7 @@ const LoginForm = () => {
                 {username.errorMsg ? <p className="errorMsg">{username.errorMsg}</p> : null}
                 
                 <input
-                    className={(username.notCorrect || username.touched) ? '' : 'error'}
+                    className={(password.notCorrect || password.touched) ? '' : 'error'}
                     type="password" 
                     name="password" 
                     placeholder="Your password" 

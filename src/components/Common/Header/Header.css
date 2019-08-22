@@ -18,3 +18,7 @@
     color: purple;
     font-size: 1.2em;
 }
+
+.site-navigation ul li a.active {
+    text-shadow: -2px 2px 5px darkgray;
+}

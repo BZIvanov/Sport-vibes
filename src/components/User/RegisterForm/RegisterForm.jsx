@@ -123,7 +123,7 @@ const RegisterForm = (props) => {
                 {username.errorMsg ? <p className="errorMsg">{username.errorMsg}</p> : null}
                 
                 <input 
-                    className={(username.notCorrect || username.touched) ? '' : 'error'} 
+                    className={(email.notCorrect || email.touched) ? '' : 'error'} 
                     type="email" 
                     name="email" 
                     placeholder="Your e-mail" 
@@ -132,7 +132,7 @@ const RegisterForm = (props) => {
                 {email.errorMsg ? <p className="errorMsg">{email.errorMsg}</p> : null}
 
                 <input
-                    className={(username.notCorrect || username.touched) ? '' : 'error'}
+                    className={(password.notCorrect || password.touched) ? '' : 'error'}
                     type="password" 
                     name="password" 
                     placeholder="Your password" 
@@ -140,7 +140,7 @@ const RegisterForm = (props) => {
                 {password.errorMsg ? <p className="errorMsg">{password.errorMsg}</p> : null}
 
                 <input
-                    className={(username.notCorrect || username.touched) ? '' : 'error'}
+                    className={(repeatPassword.notCorrect || repeatPassword.touched) ? '' : 'error'}
                     type="password" 
                     name="repeatPassword" 
                     placeholder="Repeat password" 

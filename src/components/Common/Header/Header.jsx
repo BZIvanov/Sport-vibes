@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import './Header.css';
 import AuthContext from '../../../context/auth-context';
@@ -7,13 +7,26 @@ import AuthContext from '../../../context/auth-context';
 const Navigation = () => {
     const auth = useContext(AuthContext);
 
-    const user = (
+    const leftNavUser = (
+        <ul>
+            <li><NavLink exact to="/home">Home</NavLink></li>
+            <li><NavLink to="/user/add">Add New Exercise</NavLink></li>
+        </ul>
+    );
+
+    const leftNavNoUser = (
+        <ul>
+            <li><Link to="/">Home</Link></li>
+        </ul>
+    );
+
+    const rightNavUser = (
         <ul>
             <li>Welcome {localStorage.getItem('username')}!</li>
             <li><Link to="/user/logout">Logout</Link></li> 
         </ul>
     );
-    const noUser = (
+    const rightNavNoUser = (
         <ul>
             <li><Link to="/user/login">Login</Link></li>
             <li><Link to="/user/register">Register</Link></li>
@@ -22,13 +35,9 @@ const Navigation = () => {
     
     return (
         <nav className="site-navigation">
-            <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-            </ul>
+            {auth.status ? leftNavUser : leftNavNoUser}
 
-            {auth.status ? user : noUser}
+            {auth.status ? rightNavUser : rightNavNoUser}
         </nav>
     )
 };
