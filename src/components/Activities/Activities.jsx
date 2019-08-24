@@ -53,7 +53,7 @@ const Activities = () => {
     return (
         <React.Fragment>
             <section className="titles">
-                <h4>Full exercises list</h4>
+                <h2>Full exercises list</h2>
                 {list.length > 0 ? <h3>Selected exrecises</h3> : null}
             </section>
             <section className="selection">

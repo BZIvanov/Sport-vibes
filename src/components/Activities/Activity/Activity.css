@@ -28,8 +28,8 @@ article.easy {
 }
 
 article.normal {
-    border: 2px solid lightyellow;
-    box-shadow: -3px 3px 5px lightyellow;
+    border: 2px solid rgba(252, 252, 79, 0.664);
+    box-shadow: -3px 3px 5px rgba(252, 252, 79, 0.664);
     border-radius: 3px;
 }
 

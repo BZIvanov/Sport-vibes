@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
 import './AddNewExercise.css';
+import * as kinveySetup from '../../../services/kinveySetup';
 
 const AddNewExercise = (props) => {
     const [title, setTitle] = useState({
@@ -22,7 +25,7 @@ const AddNewExercise = (props) => {
         errorMsg: ''
     });
     const [difficulty, setDifficulty] = useState({
-        val: '',
+        val: 'normal',
         touched: false,
         notCorrect: true,
         errorMsg: ''
@@ -72,11 +75,6 @@ const AddNewExercise = (props) => {
                 ...repeats,
                 touched: true
             });
-        } else if (event.target.name === 'difficulty') {
-            setDifficulty({
-                ...difficulty,
-                touched: true
-            });
         }
     }
 
@@ -100,17 +98,21 @@ const AddNewExercise = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        
         if ((title.errorMsg === '' && title.touched) && (imageUrl.errorMsg === '' && imageUrl.touched) &&
         (repeats.errorMsg === '' && repeats.touched)) {
-            // let userHandler = new UserHandler();
-            // userHandler.registerUser({
-            //     username: username.val, 
-            //     email: email.val, 
-            //     password: password.val
-            // }).then(response => {
-            //     props.history.push('/user/login');
-            // });
+            let data = { 
+                title: title.val,
+                imageUrl: imageUrl.val,
+                repeats: +repeats.val,
+                difficulty: difficulty.val
+            };
+            axios.defaults.headers.common['Authorization'] = `Kinvey ${localStorage.getItem('authtoken')}`;
+            axios.post(kinveySetup.baseUrl + "appdata/" + kinveySetup.appKey + "/activities", data).then(res => {
+                toast.success("Succesfully added new exercise");
+                props.history.push('/home');
+            }).catch(err => {
+                console.log("Add new exercise:", err);
+            });
         }
     };
 
@@ -141,10 +143,11 @@ const AddNewExercise = (props) => {
                     type="number" 
                     name="repeats" 
                     placeholder="Number of repeats" 
-                    onChange={handleInputChange} />
+                    onChange={handleInputChange}
+                    onFocus={handleFocused} />
                 {repeats.errorMsg ? <p className="errorMsg">{repeats.errorMsg}</p> : null}
 
-                <select defaultValue="normal" name="difficulty" onChange={handleInputChange} >
+                <select name="difficulty" onChange={handleInputChange} defaultValue="normal" >
                     <option value="easy">Easy</option>
                     <option value="normal">Normal</option>
                     <option value="hard">Hard</option>
