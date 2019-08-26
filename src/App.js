@@ -14,6 +14,7 @@ import RegisterForm from './components/User/RegisterForm/RegisterForm';
 import LoginForm from './components/User/LoginForm/LoginForm';
 import Logout from './components/User/Logout/Logout';
 import AddNewExercise from './components/Controls/AddNewExercise/AddNewExercise';
+import MyExercises from './components/Controls/MyExercises/MyExercises';
 import NotFound from './components/Common/NotFound/NotFound';
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
             <Route path="/user/login" component={LoginForm} />
             <Route path="/user/logout" component={Logout} />
             <Route path="/user/add" component={AddNewExercise} />
+            <Route path="/user/my-exercises" component={MyExercises} />
             <Route component={NotFound} />
           </Switch>
         </Layout>
