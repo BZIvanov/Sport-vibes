@@ -1,3 +1,10 @@
+section.exercise-details {
+    box-shadow: 0 0 5px darkgray;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
 section.exercise-details h1 {
     text-align: center;
 }
@@ -18,6 +25,7 @@ section.exercise-details div.on-right p {
 section.exercise-details div img {
     width: 350px;
     height: 250px;
+    border-radius: 10px;
 }
 
 .info-btn, .danger-btn {
@@ -48,5 +56,10 @@ section.exercise-details div img {
     section.exercise-details div img {
         width: 250px;
         height: 150px;
+    }
+
+    .info-btn, .danger-btn {
+        font-size: 1.1em;
+        padding: 5px 12px; 
     }
 }

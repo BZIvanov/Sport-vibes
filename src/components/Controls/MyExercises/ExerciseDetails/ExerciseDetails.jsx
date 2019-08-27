@@ -4,14 +4,17 @@ import { toast } from 'react-toastify';
 
 import * as kinveySetup from '../../../../services/kinveySetup';
 import './ExerciseDetails.css';
+import Loading from '../../../UI/Loading/Loading';
 
 const ExerciseDetails = (props) => {
     const [exercise, setExercise] = useState({});
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         axios.defaults.headers.common['Authorization'] = `Kinvey ${localStorage.getItem('authtoken')}`;
         axios.get(kinveySetup.baseUrl + "appdata/" + kinveySetup.appKey + "/activities/" + props.match.params.id).then(response => {
             setExercise(response.data);
+            setIsLoaded(true);
         }).catch(err => console.log(err));
     }, [props.match.params.id]);
 
@@ -32,7 +35,7 @@ const ExerciseDetails = (props) => {
         props.history.push('/user/add' + query);
     };
 
-    return (
+    let dataToDisplay = isLoaded ?
         <section className="exercise-details">
             <h1>{exercise.title}</h1>
             <div>
@@ -46,8 +49,13 @@ const ExerciseDetails = (props) => {
                     </div>
                 </div>
             </div>
-        </section>
-        
+        </section> : 
+        <Loading />;
+
+    return (
+        <div>
+            { dataToDisplay }
+        </div> 
     )
 };
 
