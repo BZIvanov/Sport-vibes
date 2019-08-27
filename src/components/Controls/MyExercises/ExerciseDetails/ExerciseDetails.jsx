@@ -21,12 +21,15 @@ const ExerciseDetails = (props) => {
         if (agreed) {
             axios.defaults.headers.common['Authorization'] = `Kinvey ${localStorage.getItem('authtoken')}`;
             axios.delete(kinveySetup.baseUrl + "appdata/" + kinveySetup.appKey + "/activities/" + props.match.params.id).then(response => {
-                
-                    toast.success('Succesfully deleted item!');
-                    props.history.push('/user/my-exercises');
-                
+                toast.success('Succesfully deleted item!');
+                props.history.push('/user/my-exercises');
             }).catch(err => console.log(err));
         }
+    };
+
+    const editExercise = () => {
+        const query = `?id=${exercise._id}&title=${exercise.title}&imageUrl=${exercise.imageUrl}&repeats=${exercise.repeats}&difficulty=${exercise.difficulty}`;
+        props.history.push('/user/add' + query);
     };
 
     return (
@@ -38,7 +41,7 @@ const ExerciseDetails = (props) => {
                     <p>Repeats: {exercise.repeats}</p>
                     <p>Difficulty: {exercise.difficulty}</p>
                     <div className="button-controls">
-                        <button className="info-btn">Edit</button>
+                        <button className="info-btn" onClick={editExercise}>Edit</button>
                         <button className="danger-btn" onClick={deleteExercise}>Delete</button>
                     </div>
                 </div>

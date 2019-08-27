@@ -6,26 +6,28 @@ import './AddNewExercise.css';
 import * as kinveySetup from '../../../services/kinveySetup';
 
 const AddNewExercise = (props) => {
+    const query = new URLSearchParams(props.location.search);
+    
     const [title, setTitle] = useState({
-        val: '',
+        val: query.get('title') || '',
         touched: false,
         notCorrect: true,
         errorMsg: ''
     });
     const [imageUrl, setImageUrl] = useState({
-        val: '',
+        val: query.get('imageUrl') || '',
         touched: false,
         notCorrect: true,
         errorMsg: ''
     });
     const [repeats, setRepeats] = useState({
-        val: '',
+        val: query.get('repeats') || '',
         touched: false,
         notCorrect: true,
         errorMsg: ''
     });
     const [difficulty, setDifficulty] = useState({
-        val: 'normal',
+        val: query.get('difficulty') || 'normal',
         touched: false,
         notCorrect: true,
         errorMsg: ''
@@ -98,31 +100,50 @@ const AddNewExercise = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if ((title.errorMsg === '' && title.touched) && (imageUrl.errorMsg === '' && imageUrl.touched) &&
-        (repeats.errorMsg === '' && repeats.touched)) {
-            let data = { 
-                title: title.val,
-                imageUrl: imageUrl.val,
-                repeats: +repeats.val,
-                difficulty: difficulty.val
-            };
-            axios.defaults.headers.common['Authorization'] = `Kinvey ${localStorage.getItem('authtoken')}`;
-            axios.post(kinveySetup.baseUrl + "appdata/" + kinveySetup.appKey + "/activities", data).then(res => {
-                toast.success("Succesfully added new exercise");
-                props.history.push('/home');
-            }).catch(err => {
-                console.log("Add new exercise:", err);
-            });
+        if (query.get('title')) {
+            if (title.errorMsg === '' && imageUrl.errorMsg === '' && repeats.errorMsg === '') {
+                let data = { 
+                    title: title.val,
+                    imageUrl: imageUrl.val,
+                    repeats: +repeats.val,
+                    difficulty: difficulty.val
+                };
+                axios.defaults.headers.common['Authorization'] = `Kinvey ${localStorage.getItem('authtoken')}`;
+                axios.put(kinveySetup.baseUrl + "appdata/" + kinveySetup.appKey + "/activities/" + query.get('id'), data).then(res => {
+                    toast.success("Succesfully updated exercise");
+                    props.history.push('/user/my-exercises');
+                }).catch(err => {
+                    console.log("Edit exercise:", err);
+                });
+            }
+        } else {
+            if ((title.errorMsg === '' && title.touched) && (imageUrl.errorMsg === '' && imageUrl.touched) &&
+            (repeats.errorMsg === '' && repeats.touched)) {
+                let data = { 
+                    title: title.val,
+                    imageUrl: imageUrl.val,
+                    repeats: +repeats.val,
+                    difficulty: difficulty.val
+                };
+                axios.defaults.headers.common['Authorization'] = `Kinvey ${localStorage.getItem('authtoken')}`;
+                axios.post(kinveySetup.baseUrl + "appdata/" + kinveySetup.appKey + "/activities", data).then(res => {
+                    toast.success("Succesfully added new exercise");
+                    props.history.push('/home');
+                }).catch(err => {
+                    console.log("Add new exercise:", err);
+                });
+            }
         }
     };
 
     return (
         <div className="user-form">
-            <h1>Add new exercise</h1>
+            <h1>{query.get('title') ? 'Edit exercise' : 'Add exercise'}</h1>
             <form onSubmit={handleSubmit}>
                 <input 
                     className={(title.notCorrect || title.touched) ? '' : 'error'} 
-                    type="text" 
+                    type="text"
+                    value={title.val}
                     name="title" 
                     placeholder="Title" 
                     onChange={handleInputChange}
@@ -131,7 +152,8 @@ const AddNewExercise = (props) => {
                 
                 <input 
                     className={(imageUrl.notCorrect || imageUrl.touched) ? '' : 'error'} 
-                    type="text" 
+                    type="text"
+                    value={imageUrl.val}
                     name="imageUrl" 
                     placeholder="Image URL" 
                     onChange={handleInputChange}
@@ -140,20 +162,21 @@ const AddNewExercise = (props) => {
 
                 <input
                     className={(repeats.notCorrect || repeats.touched) ? '' : 'error'}
-                    type="number" 
+                    type="number"
+                    value={repeats.val}
                     name="repeats" 
                     placeholder="Number of repeats" 
                     onChange={handleInputChange}
                     onFocus={handleFocused} />
                 {repeats.errorMsg ? <p className="errorMsg">{repeats.errorMsg}</p> : null}
 
-                <select name="difficulty" onChange={handleInputChange} defaultValue="normal" >
+                <select name="difficulty" onChange={handleInputChange} defaultValue={difficulty.val} >
                     <option value="easy">Easy</option>
                     <option value="normal">Normal</option>
                     <option value="hard">Hard</option>
                 </select>     
 
-                <button>Add exercise</button>
+                <button>{query.get('title') ? 'Edit exercise' : 'Add exercise'}</button>
             </form>
         </div>
     );

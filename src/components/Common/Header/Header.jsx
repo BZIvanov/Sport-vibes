@@ -10,7 +10,7 @@ const Navigation = () => {
     const leftNavUser = (
         <ul>
             <li><NavLink exact to="/home">Home</NavLink></li>
-            <li><NavLink to="/user/add">Add New Exercise</NavLink></li>
+            <li><NavLink to="/user/add">Update exercises</NavLink></li>
             <li><NavLink to="/user/my-exercises">My exercises</NavLink></li>
         </ul>
     );
