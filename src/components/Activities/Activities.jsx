@@ -6,10 +6,12 @@ import ListContext from '../../context/list-context';
 import './Activities.css';
 import * as kinveySetup from '../../services/kinveySetup';
 import Activity from './Activity/Activity';
+import Loading from '../UI/Loading/Loading';
 
 const Activities = () => {
     const [activities, setActivities] = useState([]);
     const [list, setList] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const [state, dispatch] = useContext(ListContext);
 
@@ -17,6 +19,7 @@ const Activities = () => {
         axios.defaults.headers.common['Authorization'] = `Kinvey ${localStorage.getItem('authtoken')}`;
         axios.get(kinveySetup.baseUrl + "appdata/" + kinveySetup.appKey + "/activities").then(response => {
             setActivities(response.data);
+            setIsLoaded(true);
         });
     }, []);
 
@@ -53,12 +56,12 @@ const Activities = () => {
     return (
         <React.Fragment>
             <section className="titles">
-                <h2>Full exercises list</h2>
+                <h2>Full exercises list</h2>  
                 {list.length > 0 ? <h3>Selected exrecises</h3> : null}
             </section>
             <section className="selection">
                 <div className="full-list">
-                    {activities.map(x => {
+                    { activities.map(x => {
                         let isSel = '';
                         if (list.indexOf(x._id) > -1) {
                             isSel = 'selected';
@@ -76,9 +79,10 @@ const Activities = () => {
                             })
                             }
                         </div> :
-                        null
+                    null
                 }
             </section>
+            { isLoaded ? null : <Loading /> }
         </React.Fragment>
     )
 }
