@@ -19,9 +19,12 @@ const MyExercises = () => {
         <section className="my-exercises-list">
             <h2>My exercises</h2>
             <div>
-                { exercises.map(x => {
-                    return <Exercise key={x._id} data={x} />
-                })}
+                { exercises
+                    .filter(e => e._acl.creator === localStorage.getItem('userID'))
+                    .map(x => {
+                        return <Exercise key={x._id} data={x} />
+                    })
+                }
             </div>
         </section>
     )

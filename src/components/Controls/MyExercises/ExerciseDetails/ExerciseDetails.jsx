@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import * as kinveySetup from '../../../../services/kinveySetup';
 import './ExerciseDetails.css';
@@ -10,10 +11,23 @@ const ExerciseDetails = (props) => {
     useEffect(() => {
         axios.defaults.headers.common['Authorization'] = `Kinvey ${localStorage.getItem('authtoken')}`;
         axios.get(kinveySetup.baseUrl + "appdata/" + kinveySetup.appKey + "/activities/" + props.match.params.id).then(response => {
-            console.log(response)
             setExercise(response.data);
-        });
+        }).catch(err => console.log(err));
     }, [props.match.params.id]);
+
+    const deleteExercise = () => {
+        // eslint-disable-next-line no-restricted-globals
+        let agreed = confirm("Are you sure you want to delete this exercise?");
+        if (agreed) {
+            axios.defaults.headers.common['Authorization'] = `Kinvey ${localStorage.getItem('authtoken')}`;
+            axios.delete(kinveySetup.baseUrl + "appdata/" + kinveySetup.appKey + "/activities/" + props.match.params.id).then(response => {
+                
+                    toast.success('Succesfully deleted item!');
+                    props.history.push('/user/my-exercises');
+                
+            }).catch(err => console.log(err));
+        }
+    };
 
     return (
         <section className="exercise-details">
@@ -25,7 +39,7 @@ const ExerciseDetails = (props) => {
                     <p>Difficulty: {exercise.difficulty}</p>
                     <div className="button-controls">
                         <button className="info-btn">Edit</button>
-                        <button className="danger-btn">Delete</button>
+                        <button className="danger-btn" onClick={deleteExercise}>Delete</button>
                     </div>
                 </div>
             </div>

@@ -29,6 +29,7 @@ section.exercise-details .button-controls {
     font-family: "Oleo Script";
     padding: 7px 17px;
     border-radius: 10px;
+    outline: none;
 }
 
 .info-btn {
