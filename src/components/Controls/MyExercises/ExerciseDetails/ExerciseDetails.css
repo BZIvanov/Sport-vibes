@@ -20,10 +20,6 @@ section.exercise-details div img {
     height: 250px;
 }
 
-section.exercise-details .button-controls {
-    
-}
-
 .info-btn, .danger-btn {
     font-size: 1.2em;
     font-family: "Oleo Script";
@@ -46,4 +42,11 @@ section.exercise-details .button-controls {
 .info-btn:hover, .danger-btn:hover {
     cursor: pointer;
     box-shadow: 2px 2px 3px darkgray;
+}
+
+@media all and (max-width: 680px) {
+    section.exercise-details div img {
+        width: 250px;
+        height: 150px;
+    }
 }

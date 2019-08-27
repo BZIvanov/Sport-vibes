@@ -49,3 +49,15 @@ div.my-list button:hover {
     cursor: pointer;
     box-shadow: -2px 2px 5px black;
 }
+
+@media all and (max-width: 1060px) {
+    div.full-list {
+        width: 380px;
+    }
+}
+
+@media all and (max-width: 680px) {
+    div.full-list {
+        width: 280px;
+    }
+}

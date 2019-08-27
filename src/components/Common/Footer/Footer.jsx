@@ -5,7 +5,7 @@ import './Footer.css';
 const Footer = () => {
     return (
         <footer>
-            <h1>Footer</h1>
+            <p>Simple training app created by B. Ivanov</p>
         </footer>
     )
 };
