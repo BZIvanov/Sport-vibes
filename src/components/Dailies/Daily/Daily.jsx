@@ -10,6 +10,10 @@ const Daily = (props) => {
         const arr = [...completed];
         arr[idx] = !completed[idx];
         setCompleted(arr);
+
+        if (arr.filter(x => !x).length === 0) {
+            props.onFinished();
+        }
     };
     
     const classes = ['daily-item', 'd-' + props.data.difficulty];
