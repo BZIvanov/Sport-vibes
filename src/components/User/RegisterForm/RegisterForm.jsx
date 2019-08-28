@@ -48,12 +48,14 @@ const RegisterForm = (props) => {
                 val: event.target.value,
                 errorMsg: checkValidity(event.target.name, event.target.value)
             });
+            
         } else if (event.target.name === 'repeatPassword') {
             setrepeatPassword({
                 ...repeatPassword,
                 val: event.target.value,
                 errorMsg: checkValidity(event.target.name, event.target.value)
             });
+            
         }
     };
 
@@ -85,8 +87,8 @@ const RegisterForm = (props) => {
         if (inputValue === '') {
             return "Value is required!";
         }
-        if ((inputName === 'username' || inputName === 'password' || inputName ==='repeatPassword') && inputValue.length < 3) {
-            return "At least 3 symbols are required";
+        if ((inputName === 'username' || inputName === 'password' || inputName ==='repeatPassword') && (inputValue.length < 3 || inputValue.length > 30)) {
+            return "Between 3 and 30 symbols only!";
         } else if (inputName === 'email' && !/^[^@]+@[^@]+\.[^@]+$/.test(inputValue)) {
             return "Please provide a valid e-mail";
         }
@@ -95,7 +97,7 @@ const RegisterForm = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        
+
         if ((username.errorMsg === '' && username.touched) && (email.errorMsg === '' && email.touched) &&
         (password.errorMsg === '' && password.touched) && (repeatPassword.errorMsg === '' && repeatPassword.touched)) {
             let userHandler = new UserHandler();
@@ -136,7 +138,8 @@ const RegisterForm = (props) => {
                     type="password" 
                     name="password" 
                     placeholder="Your password" 
-                    onChange={handleInputChange} />
+                    onChange={handleInputChange}
+                    onFocus={handleFocused} />
                 {password.errorMsg ? <p className="errorMsg">{password.errorMsg}</p> : null}
 
                 <input
@@ -144,7 +147,8 @@ const RegisterForm = (props) => {
                     type="password" 
                     name="repeatPassword" 
                     placeholder="Repeat password" 
-                    onChange={handleInputChange} />
+                    onChange={handleInputChange}
+                    onFocus={handleFocused} />
                 {repeatPassword.errorMsg ? <p className="errorMsg">{repeatPassword.errorMsg}</p> : null}
 
                 <button>Register</button>

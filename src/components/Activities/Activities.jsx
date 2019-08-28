@@ -13,7 +13,7 @@ const Activities = () => {
     const [list, setList] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
 
-    const [state, dispatch] = useContext(ListContext);
+    const resultArr = useContext(ListContext);
 
     useEffect(() => {
         axios.defaults.headers.common['Authorization'] = `Kinvey ${localStorage.getItem('authtoken')}`;
@@ -51,7 +51,7 @@ const Activities = () => {
             return x;
         });
 
-        dispatch({ type: 'addToList', payload: acts });
+        resultArr[1]({ type: 'addToList', payload: acts });
     }
 
     return (
