@@ -41,6 +41,7 @@ const Activities = () => {
                 let tempObj = {
                     difficulty: x.difficulty,
                     imageUrl: x.imageUrl,
+                    series: x.series,
                     repeats: x.repeats,
                     id: x._id,
                     title: x.title
@@ -72,7 +73,7 @@ const Activities = () => {
                 {
                     list.length > 0 ?
                         <div className="my-list">
-                            <Link to="/user/register"><button onClick={setToContext}>Continue</button></Link>
+                            <Link to="/dailies"><button onClick={setToContext}>Continue</button></Link>
                             {activities.filter(x => list.indexOf(x._id) > -1).map(y => {
                                 let isSel = 'selected';
                                 return <Activity key={y._id} data={y} chosen={addToList} isSelected={isSel} />

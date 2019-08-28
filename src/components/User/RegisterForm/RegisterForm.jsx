@@ -32,25 +32,25 @@ const RegisterForm = (props) => {
     const handleInputChange = (event) => {
         if (event.target.name === 'username') {
             setUsername({
-                    ...username,
-                    val: event.target.value,
-                    errorMsg: checkValidity(event.target.name, event.target.value)
-                });
+                ...username,
+                val: event.target.value,
+                errorMsg: checkValidity(event.target.name, event.target.value)
+            });
         } else if (event.target.name === 'email') {
             setEmail({
-                ...username,
+                ...email,
                 val: event.target.value,
                 errorMsg: checkValidity(event.target.name, event.target.value)
             });
         } else if (event.target.name === 'password') {
             setPassword({
-                ...username,
+                ...password,
                 val: event.target.value,
                 errorMsg: checkValidity(event.target.name, event.target.value)
             });
         } else if (event.target.name === 'repeatPassword') {
             setrepeatPassword({
-                ...username,
+                ...repeatPassword,
                 val: event.target.value,
                 errorMsg: checkValidity(event.target.name, event.target.value)
             });
@@ -60,22 +60,22 @@ const RegisterForm = (props) => {
     const handleFocused = (event) => {
         if (event.target.name === 'username') {
             setUsername({
-                    ...username,
-                    touched: true
-                });
+                ...username,
+                touched: true
+            });
         } else if (event.target.name === 'email') {
             setEmail({
-                ...username,
+                ...email,
                 touched: true
             });
         } else if (event.target.name === 'password') {
             setPassword({
-                ...username,
+                ...password,
                 touched: true
             });
         } else if (event.target.name === 'repeatPassword') {
             setrepeatPassword({
-                ...username,
+                ...repeatPassword,
                 touched: true
             });
         }

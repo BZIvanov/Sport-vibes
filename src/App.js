@@ -16,6 +16,7 @@ import Logout from './components/User/Logout/Logout';
 import AddNewExercise from './components/Controls/AddNewExercise/AddNewExercise';
 import MyExercises from './components/Controls/MyExercises/MyExercises';
 import ExerciseDetails from './components/Controls/MyExercises/ExerciseDetails/ExerciseDetails';
+import Dailies from './components/Dailies/Dailies';
 import NotFound from './components/Common/NotFound/NotFound';
 
 const App = () => {
@@ -43,6 +44,7 @@ const App = () => {
             <Route path="/user/add" component={AddNewExercise} />
             <Route path="/user/my-exercises" component={MyExercises} />
             <Route path="/user/exercise-details/:id" component={ExerciseDetails} />
+            <Route path="/dailies" component={Dailies} />
             <Route component={NotFound} />
           </Switch>
         </Layout>

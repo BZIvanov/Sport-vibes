@@ -20,6 +20,12 @@ const AddNewExercise = (props) => {
         notCorrect: true,
         errorMsg: ''
     });
+    const [series, setSeries] = useState({
+        val: query.get('series') || '',
+        touched: false,
+        notCorrect: true,
+        errorMsg: ''
+    });
     const [repeats, setRepeats] = useState({
         val: query.get('repeats') || '',
         touched: false,
@@ -36,13 +42,19 @@ const AddNewExercise = (props) => {
     const handleInputChange = (event) => {
         if (event.target.name === 'title') {
             setTitle({
-                    ...title,
-                    val: event.target.value,
-                    errorMsg: checkValidity(event.target.name, event.target.value)
-                });
+                ...title,
+                val: event.target.value,
+                errorMsg: checkValidity(event.target.name, event.target.value)
+            });
         } else if (event.target.name === 'imageUrl') {
             setImageUrl({
                 ...imageUrl,
+                val: event.target.value,
+                errorMsg: checkValidity(event.target.name, event.target.value)
+            });
+        } else if (event.target.name === 'series') {
+            setSeries({
+                ...series,
                 val: event.target.value,
                 errorMsg: checkValidity(event.target.name, event.target.value)
             });
@@ -64,12 +76,17 @@ const AddNewExercise = (props) => {
     const handleFocused = (event) => {
         if (event.target.name === 'title') {
             setTitle({
-                    ...title,
-                    touched: true
-                });
+                ...title,
+                touched: true
+            });
         } else if (event.target.name === 'imageUrl') {
             setImageUrl({
                 ...imageUrl,
+                touched: true
+            });
+        } else if (event.target.name === 'series') {
+            setSeries({
+                ...series,
                 touched: true
             });
         } else if (event.target.name === 'repeats') {
@@ -90,9 +107,11 @@ const AddNewExercise = (props) => {
             return "Title is too long.";
         } else if (inputName === 'imageUrl' && inputValue.length > 200) {
             return "ImageURL too long";
+        } else if (inputName === 'series' && (+inputValue > 5 || +inputValue < 3)) {
+            return "Series are prefered to be between 3 and 5";
         } else if (inputName === 'repeats' && +inputValue > 100) {
             return "Maximum repeats should be 100 or less";
-        }else if (inputName === 'imageUrl' && !/^http/.test(inputValue)) {
+        } else if (inputName === 'imageUrl' && !/^http/.test(inputValue)) {
             return "Please provide valid URL";
         }
         return '';
@@ -101,10 +120,11 @@ const AddNewExercise = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (query.get('title')) {
-            if (title.errorMsg === '' && imageUrl.errorMsg === '' && repeats.errorMsg === '') {
+            if (title.errorMsg === '' && imageUrl.errorMsg === '' && series.errorMsg === '' && repeats.errorMsg === '') {
                 let data = { 
                     title: title.val,
                     imageUrl: imageUrl.val,
+                    series: +series.val,
                     repeats: +repeats.val,
                     difficulty: difficulty.val
                 };
@@ -118,10 +138,11 @@ const AddNewExercise = (props) => {
             }
         } else {
             if ((title.errorMsg === '' && title.touched) && (imageUrl.errorMsg === '' && imageUrl.touched) &&
-            (repeats.errorMsg === '' && repeats.touched)) {
+            (series.errorMsg === '' && series.touched) && (repeats.errorMsg === '' && repeats.touched)) {
                 let data = { 
                     title: title.val,
                     imageUrl: imageUrl.val,
+                    series: +series.val,
                     repeats: +repeats.val,
                     difficulty: difficulty.val
                 };
@@ -159,6 +180,16 @@ const AddNewExercise = (props) => {
                     onChange={handleInputChange}
                     onFocus={handleFocused} />
                 {imageUrl.errorMsg ? <p className="errorMsg">{imageUrl.errorMsg}</p> : null}
+
+                <input
+                    className={(series.notCorrect || series.touched) ? '' : 'error'}
+                    type="number"
+                    value={series.val}
+                    name="series" 
+                    placeholder="Series (3-5)" 
+                    onChange={handleInputChange}
+                    onFocus={handleFocused} />
+                {series.errorMsg ? <p className="errorMsg">{series.errorMsg}</p> : null}
 
                 <input
                     className={(repeats.notCorrect || repeats.touched) ? '' : 'error'}

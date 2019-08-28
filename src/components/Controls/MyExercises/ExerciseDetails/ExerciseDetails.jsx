@@ -31,7 +31,7 @@ const ExerciseDetails = (props) => {
     };
 
     const editExercise = () => {
-        const query = `?id=${exercise._id}&title=${exercise.title}&imageUrl=${exercise.imageUrl}&repeats=${exercise.repeats}&difficulty=${exercise.difficulty}`;
+        const query = `?id=${exercise._id}&title=${exercise.title}&imageUrl=${exercise.imageUrl}&series=${exercise.series}&repeats=${exercise.repeats}&difficulty=${exercise.difficulty}`;
         props.history.push('/user/add' + query);
     };
 
@@ -41,6 +41,7 @@ const ExerciseDetails = (props) => {
             <div>
                 <img src={exercise.imageUrl} alt="exercise-details"/>
                 <div className="on-right">
+                    <p>Series: {exercise.series}</p>
                     <p>Repeats: {exercise.repeats}</p>
                     <p>Difficulty: {exercise.difficulty}</p>
                     <div className="button-controls">

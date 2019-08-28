@@ -1,0 +1,15 @@
+article.daily-item {
+
+}
+
+article.daily-item.d-hard {
+    color: lightcoral;
+}
+
+article.daily-item.d-normal {
+    color: rgba(252, 252, 79, 0.664);
+}
+
+article.daily-item.d-easy {
+    color: lightgreen;
+}
