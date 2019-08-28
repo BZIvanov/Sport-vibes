@@ -1,5 +1,26 @@
 article.daily-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    background-color: rgb(117, 117, 117);
+    border-radius: 15px;
+    padding: 10px 30px;
+}
 
+article.daily-item h1 {
+    font-size: 1.7em;
+    padding: 0;
+    margin: 0;
+}
+
+article.daily-item img {
+    width: 250px;
+    height: 150px;
+}
+
+div.series-items {
+    display: flex;
 }
 
 article.daily-item.d-hard {
