@@ -1,36 +1,36 @@
 article.daily-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0;
-    background-color: rgb(117, 117, 117);
-    border-radius: 15px;
-    padding: 10px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  background-color: rgb(117, 117, 117);
+  border-radius: 15px;
+  padding: 10px 30px;
 }
 
 article.daily-item h1 {
-    font-size: 1.7em;
-    padding: 0;
-    margin: 0;
+  font-size: 1.7em;
+  padding: 0;
+  margin: 0;
 }
 
 article.daily-item img {
-    width: 250px;
-    height: 150px;
+  width: 250px;
+  height: 150px;
 }
 
 div.series-items {
-    display: flex;
+  display: flex;
 }
 
 article.daily-item.d-hard {
-    color: lightcoral;
+  color: lightcoral;
 }
 
 article.daily-item.d-normal {
-    color: rgba(252, 252, 79, 0.664);
+  color: rgba(252, 252, 79, 0.664);
 }
 
 article.daily-item.d-easy {
-    color: lightgreen;
+  color: lightgreen;
 }

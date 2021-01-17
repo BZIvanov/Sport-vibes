@@ -1,67 +1,67 @@
 .user-form {
-    color: darkgray;
-    text-align: center;
+  color: darkgray;
+  text-align: center;
 }
 
 .user-form h1 {
-    text-shadow: -1px 1px 2px black;
-    letter-spacing: 2px;
+  text-shadow: -1px 1px 2px black;
+  letter-spacing: 2px;
 }
 
 .user-form form {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    padding: 30px 25px 40px 25px;
-    box-shadow: 0 0 3px purple;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 30px 25px 40px 25px;
+  box-shadow: 0 0 3px purple;
 }
 
 .user-form form input {
-    font-family: "Oleo Script";
-    min-width: 235px;
-    margin: 5px 0 10px 0;
-    padding: 7px;
-    border: 1px solid black;
-    border-radius: 5px;
-    outline: none;
+  font-family: 'Oleo Script';
+  min-width: 235px;
+  margin: 5px 0 10px 0;
+  padding: 7px;
+  border: 1px solid black;
+  border-radius: 5px;
+  outline: none;
 }
 
 .user-form form select {
-    font-family: "Oleo Script";
-    min-width: 235px;
-    margin: 5px 0 10px 0;
-    padding: 7px;
-    border: 1px solid black;
-    border-radius: 5px;
-    outline: none;
+  font-family: 'Oleo Script';
+  min-width: 235px;
+  margin: 5px 0 10px 0;
+  padding: 7px;
+  border: 1px solid black;
+  border-radius: 5px;
+  outline: none;
 }
 
 .user-form form input:focus {
-    border: 1px solid purple;
+  border: 1px solid purple;
 }
 
 .user-form form button {
-    font-family: "Oleo Script";
-    font-size: 1.4em;
-    color: darkgray;
-    background: purple;
-    border: 2px solid darkgray;
-    border-radius: 5px;
-    text-shadow: 0 0 5px black;
-    outline: none;
+  font-family: 'Oleo Script';
+  font-size: 1.4em;
+  color: darkgray;
+  background: purple;
+  border: 2px solid darkgray;
+  border-radius: 5px;
+  text-shadow: 0 0 5px black;
+  outline: none;
 }
 
 .user-form form button:hover {
-    cursor: pointer;
-    box-shadow: -2px 2px 5px black;
+  cursor: pointer;
+  box-shadow: -2px 2px 5px black;
 }
 
 .user-form input.error {
-    border: 1px solid red;
+  border: 1px solid red;
 }
 
 .user-form .errorMsg {
-    padding: 0;
-    margin: 0;
-    color: red;
+  padding: 0;
+  margin: 0;
+  color: red;
 }

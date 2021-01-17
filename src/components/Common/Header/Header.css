@@ -1,24 +1,24 @@
 .site-navigation {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .site-navigation ul {
-    display: flex;
-    padding: 0;
+  display: flex;
+  padding: 0;
 }
 
 .site-navigation ul li {
-    list-style-type: none;
-    padding: 5px 10px;
+  list-style-type: none;
+  padding: 5px 10px;
 }
 
 .site-navigation ul li a {
-    text-decoration: none;
-    color: purple;
-    font-size: 1.2em;
+  text-decoration: none;
+  color: purple;
+  font-size: 1.2em;
 }
 
 .site-navigation ul li a.active {
-    text-shadow: -2px 2px 5px darkgray;
+  text-shadow: -2px 2px 5px darkgray;
 }

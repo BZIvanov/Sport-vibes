@@ -1,9 +1,9 @@
 section.my-exercises-list h2 {
-    text-align: center;
+  text-align: center;
 }
 
 section.my-exercises-list div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
