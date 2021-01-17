@@ -1,5 +1,4 @@
 import axiosNonUser from '../axios/axiosNonUser';
-
 import * as kinveySetup from './kinveySetup';
 
 export class UserHandler {

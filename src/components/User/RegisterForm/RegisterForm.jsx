@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-
-import './RegisterForm.css';
 import { UserHandler } from '../../../services/userSetup';
+import './RegisterForm.css';
 
 const RegisterForm = (props) => {
   const [username, setUsername] = useState({
@@ -114,7 +113,7 @@ const RegisterForm = (props) => {
       repeatPassword.errorMsg === '' &&
       repeatPassword.touched
     ) {
-      let userHandler = new UserHandler();
+      const userHandler = new UserHandler();
       userHandler
         .registerUser({
           username: username.val,
@@ -123,7 +122,8 @@ const RegisterForm = (props) => {
         })
         .then((response) => {
           props.history.push('/user/login');
-        });
+        })
+        .catch((err) => console.log('Register User Error: ', err));
     }
   };
 
