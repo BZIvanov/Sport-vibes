@@ -1,0 +1,24 @@
+{
+  "name": "objection-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon",
+    "migrate": "npx knex migrate:latest --knexfile ./db/knexfile.js",
+    "seed": "npx knex seed:run --knexfile ./db/knexfile.js",
+    "down": "npx knex migrate:down --knexfile ./db/knexfile.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.95.1",
+    "objection": "^2.2.14",
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
