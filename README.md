@@ -6,5 +6,6 @@ This repo contains examples with demo usage of different npm packages.
 
 | Folder    | Packages                                 |
 | --------- | ---------------------------------------- |
-| VideoDB   | <ul><li>knex</li></ul>                   |
-| TasksList | <ul><li>objection</li><li>knex</li></ul> |
+| VideoDB   | <ul><li>objection</li><li>knex</li></ul> |
+| TasksList | <ul><li>knex</li></ul>                   |
+| Dates     | <ul><li>luxon</li></ul>                  |
