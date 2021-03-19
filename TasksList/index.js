@@ -43,8 +43,8 @@ app.delete('/users/:id', (req, res, next) => {
 
   knex('users')
     .where({ id })
-    .update('deleted_at', new Date())
-    // .del()
+    // .update('deleted_at', new Date())
+    .del()
     .then((user) => {
       res.json(user);
     })

@@ -1,5 +1,13 @@
 ## Usage
 
+Install the dependencies.
+Commands List:
+
+1. **npm start** - starts the express server
+2. **npm run migrate** - will create the tables in the database
+3. **npm run seed** - will seed data in the tables in the database
+4. **npm run down** - will revert the latest migration, run multiple times to revert all.
+
 ## Knex
 
 Running the command _npx knex migrate:make some_file_name_ will generate migration file named something like _20210312105123_some_file_name.js_. That random number is actually year + month + day + hour + minutes + seconds so if you want to reorder them you can simply change some of the numbers.
