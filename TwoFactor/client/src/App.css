@@ -1,0 +1,34 @@
+.register-section {
+  display: flex;
+  justify-content: center;
+}
+
+.verify-section {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.users-section {
+  text-align: center;
+}
+
+.users-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.user {
+  border: 1px solid gray;
+  margin: 5px;
+  padding: 5px;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+}

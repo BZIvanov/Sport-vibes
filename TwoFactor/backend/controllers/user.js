@@ -1,6 +1,16 @@
 const speakeasy = require('speakeasy');
 const User = require('../db/models/user');
 
+exports.getAll = async (req, res) => {
+  try {
+    const users = await User.query();
+
+    res.status(201).json({ users });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 exports.register = async (req, res) => {
   try {
     const { username } = req.body;
@@ -24,6 +34,9 @@ exports.verify = async (req, res) => {
   try {
     const { userId, token } = req.body;
     const user = await User.query().findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'Not found' });
+    }
 
     const verified = speakeasy.totp.verify({
       secret: user.auth_secret,
