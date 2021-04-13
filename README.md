@@ -14,3 +14,4 @@ This repo contains examples with demo usage of different npm packages.
 | Tables       | <ul><li>xlsx</li><li>uuid</li></ul>                        |
 | Logger       | <ul><li>winston</li></ul>                                  |
 | TwoFactor    | <ul><li>speakeasy</li><li>objection</li><li>knex</li></ul> |
+| Archive      | <ul><li>archiver</li><li>express</li></ul>                 |
