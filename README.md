@@ -16,3 +16,4 @@ This repo contains examples with demo usage of different npm packages.
 | TwoFactor    | <ul><li>speakeasy</li><li>objection</li><li>knex</li></ul> |
 | Archive      | <ul><li>archiver</li><li>express</li></ul>                 |
 | Compress     | <ul><li>gzipper</li></ul>                                  |
+| Sequel       | <ul><li>sequelize</li></ul>                                |
