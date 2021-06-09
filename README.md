@@ -17,3 +17,4 @@ This repo contains examples with demo usage of different npm packages.
 | Archive      | <ul><li>archiver</li><li>express</li></ul>                 |
 | Compress     | <ul><li>gzipper</li></ul>                                  |
 | Sequel       | <ul><li>sequelize</li></ul>                                |
+| Jira         | <ul><li>jira.js</li></ul>                                  |
